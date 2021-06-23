@@ -1,19 +1,17 @@
 import { FC } from 'react'
-import { Route, Redirect } from 'react-router-dom'
-import { useDefaultPathGenerator } from '../hooks/useDefaultPathGenerator'
+import { Switch } from 'react-router-dom'
+import Login from '../views/Login'
+import Registration from '../views/Registration'
 import AuthRoute from './AuthRoute'
+import { EPaths } from './constants'
 import ContentRoute from './ContentRoute'
 
-const AppRoute: FC = () => {
-  return (
-    <>
-      <AuthRoute />
-      <ContentRoute />
-      <Route>
-        <Redirect to={useDefaultPathGenerator()} />
-      </Route>
-    </>
-  )
-}
+const AppRoute: FC = () => (
+  <Switch>
+    <AuthRoute path={EPaths.login} component={Login} />
+    <AuthRoute path={EPaths.registration} component={Registration} />
+    <ContentRoute />
+  </Switch>
+)
 
 export default AppRoute

@@ -35,7 +35,7 @@ class AppState {
     this.onlineUsers = payload
   }
 
-  setWsClient = (payload: WsClient) => {
+  setWsClient = (payload: WsClient | null) => {
     this.wsClient = payload
   }
 }

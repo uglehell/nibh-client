@@ -3,19 +3,19 @@ import { Route, Redirect, RouteComponentProps } from 'react-router-dom'
 import userState from '../store/userState'
 import { EPaths } from './constants'
 
-interface IAuthRouteProps {
+interface IPrivateRouteProps {
   component: React.FC<RouteComponentProps>
   path: string
   exact?: boolean
 }
 
-const AuthRoute: FC<IAuthRouteProps> = ({ component: Component, children, ...rest }) => (
+const PrivateRoute: FC<IPrivateRouteProps> = ({ component: Component, children, ...rest }) => (
   <Route
     {...rest}
     render={(props) =>
-      userState.isAuthenticated ? <Redirect to={EPaths.home} /> : <Component {...props} />
+      !userState.isAuthenticated ? <Redirect to={EPaths.login} /> : <Component {...props} />
     }
   />
 )
 
-export default AuthRoute
+export default PrivateRoute
