@@ -1,6 +1,7 @@
+import { AxiosError } from 'axios'
 import http from '../../http'
 import { EApiPaths } from '../../router/constants'
-import { TGetAppDataResponse } from '../../types/httpRequests/getAppData'
+import { IGetAppDataError, TGetAppDataResponse } from '../../types/httpRequests/getAppData'
 
 export const getAppData = async (): Promise<TGetAppDataResponse> => {
   try {
@@ -8,6 +9,14 @@ export const getAppData = async (): Promise<TGetAppDataResponse> => {
 
     return { ...response.data, ok: true }
   } catch (responseError) {
+    const error = { ...responseError } as AxiosError<IGetAppDataError>
+
+    if (!error.response) {
+      return {
+        ok: false,
+        message: 'Network error',
+      }
+    }
     return { ok: false }
   }
 }

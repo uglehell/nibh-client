@@ -18,6 +18,7 @@ export const useWsConnection = () => {
     appState.wsClient?.onError(onErrorHandler)
 
     return () => {
+      appState.wsClient?.close()
       appState.setWsClient(null)
     }
   }, [])

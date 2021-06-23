@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 
 class UserState {
-  username: string = ''
+  username: string = 'qq' // WIP
   isAuthenticated: boolean = true
 
   constructor() {
