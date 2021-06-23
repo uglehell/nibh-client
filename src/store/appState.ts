@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx'
 import WsClient from '../services/wsClient/wsClient'
 
-interface IMessage {
+export interface IMessage {
   author: string
   date: string
   text: string

@@ -9,8 +9,8 @@ import OnlineUsers from '../views/OnlineUsers'
 import { useDefaultPathGenerator } from '../hooks/useDefaultPathGenerator'
 
 const ContentRoute: FC = () => {
-  const defaultPath = useDefaultPathGenerator()
   useWsConnection()
+  const defaultPath = useDefaultPathGenerator()
 
   return (
     <Route>
