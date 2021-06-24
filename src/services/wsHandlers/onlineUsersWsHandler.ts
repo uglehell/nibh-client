@@ -5,7 +5,7 @@ import { EWsRequestTypes, IOpenMessageRequest } from '../../types/wsActions/wsRe
 
 export const onlineUsersWsHandler = {
   onMessage: (event: TWsEvent) => {
-    console.log(event)
+    console.log(event) // WIP
 
     switch (event.type) {
       case EWsEventResponseTypes.onlineUsersUpdate:

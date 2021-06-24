@@ -8,19 +8,29 @@ export interface IMessage {
   isSended: boolean
 }
 
+export interface IOnlineUser {
+  username: string
+  id: string
+}
+
 class AppState {
-  counterValue: number = 0
-  isMessagesRead: boolean = true
+  counter = 0
+  lastClick = ''
+  isMessagesRead = true
   messages: IMessage[] = []
-  onlineUsers: string[] = []
+  onlineUsers: IOnlineUser[] = []
   wsClient: WsClient | null = null
 
   constructor() {
     makeAutoObservable(this)
   }
 
-  setCounterValue = (payload: number) => {
-    this.counterValue = payload
+  setCounter = (payload: number) => {
+    this.counter = payload
+  }
+
+  setLastClick = (payload: string) => {
+    this.lastClick = payload
   }
 
   setIsMessagesRead = (payload: boolean) => {
@@ -31,7 +41,7 @@ class AppState {
     this.messages = payload
   }
 
-  setOnlineUsers = (payload: string[]) => {
+  setOnlineUsers = (payload: IOnlineUser[]) => {
     this.onlineUsers = payload
   }
 

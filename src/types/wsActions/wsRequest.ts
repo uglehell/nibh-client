@@ -1,5 +1,6 @@
 export enum EWsRequestTypes {
   openMessage = 'open_message',
+  homeClickMessage = 'home_click_message',
 }
 
 export interface IOpenMessageRequest {
@@ -7,4 +8,9 @@ export interface IOpenMessageRequest {
   username: string
 }
 
-export type TWsRequest = IOpenMessageRequest
+export interface IHomeClickMessageRequest {
+  type: EWsRequestTypes.homeClickMessage
+  lastClick: string
+}
+
+export type TWsRequest = IOpenMessageRequest | IHomeClickMessageRequest
