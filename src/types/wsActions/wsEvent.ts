@@ -1,8 +1,9 @@
-import { IOnlineUser } from "../../store/appState";
+import { IOnlineUser } from '../../store/appState'
 
 export enum EWsEventResponseTypes {
   onlineUsersUpdate = 'online_users_update',
   homeMessage = 'home_message',
+  newMessage = 'new_message',
 }
 
 interface IOnlineUsersUpdateResponse {
@@ -16,4 +17,12 @@ interface IHomeMessageResponse {
   lastClick: string
 }
 
-export type TWsEvent = IOnlineUsersUpdateResponse | IHomeMessageResponse
+export interface INewMessageResponse {
+  type: EWsEventResponseTypes.newMessage
+  id: string
+  text: string
+  author: string
+  createdAt: string
+}
+
+export type TWsEvent = IOnlineUsersUpdateResponse | IHomeMessageResponse | INewMessageResponse

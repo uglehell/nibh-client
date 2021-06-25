@@ -7,9 +7,11 @@ import Home from '../views/Home'
 import Chat from '../views/Chat'
 import OnlineUsers from '../views/OnlineUsers'
 import { useDefaultPathGenerator } from '../hooks/useDefaultPathGenerator'
+import { useMessagesGetter } from '../hooks/useMessagesGetter'
 
 const ContentRoute: FC = () => {
   useWsConnection()
+  useMessagesGetter()
   const defaultPath = useDefaultPathGenerator()
 
   return (

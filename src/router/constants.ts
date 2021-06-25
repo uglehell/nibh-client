@@ -10,5 +10,5 @@ export enum EApiPaths {
   login = '/login',
   registration = '/registration',
   getUser = '/get-user',
-  getAppData = '/get-app-data',
+  getMessages = '/get-messages',
 }

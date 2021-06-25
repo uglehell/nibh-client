@@ -1,15 +1,15 @@
 import { AxiosError } from 'axios'
 import http from '../../http'
 import { EApiPaths } from '../../router/constants'
-import { IGetAppDataError, TGetAppDataResponse } from '../../types/httpRequests/getAppData'
+import { IGetMessagesError, TGetMessagesResponse } from '../../types/httpRequests/getMessages'
 
-export const getAppData = async (): Promise<TGetAppDataResponse> => {
+export const getMessages = async (): Promise<TGetMessagesResponse> => {
   try {
-    const response = await http.get(EApiPaths.getAppData)
+    const response = await http.get(EApiPaths.getMessages)
 
     return { ...response.data, ok: true }
   } catch (responseError) {
-    const error = { ...responseError } as AxiosError<IGetAppDataError>
+    const error = { ...responseError } as AxiosError<IGetMessagesError>
 
     if (!error.response) {
       return {

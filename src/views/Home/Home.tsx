@@ -14,7 +14,6 @@ export const Home: FC = observer(() => {
 
   return (
     <div>
-      <div>Home</div>
       <div>Counter: {appState.counter}</div>
       <div>Last click: {appState.lastClick}</div>
       <button onClick={click}>click</button>

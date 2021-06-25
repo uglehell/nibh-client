@@ -15,7 +15,7 @@ export const onlineUsersWsHandler = {
   onOpen: (event: Event) => {
     const openMessage: IOpenMessageRequest = {
       type: EWsRequestTypes.openMessage,
-      username: userState.username,
+      id: userState.id,
     }
 
     appState.wsClient?.send(openMessage)

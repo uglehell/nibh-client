@@ -3,9 +3,9 @@ import WsClient from '../services/wsClient/wsClient'
 
 export interface IMessage {
   author: string
-  date: string
+  createdAt: string
   text: string
-  isSended: boolean
+  id: string
 }
 
 export interface IOnlineUser {
