@@ -14,7 +14,7 @@ export const Chat: FC = observer(() => {
   const setInputValueRef =
     useRef<(field: string, value: any, shouldValidate?: boolean | undefined) => void>()
 
-  const onSubmit = ({ message }: IValues) => {
+  const handleSubmit = ({ message }: IValues) => {
     if (!message) {
       return
     }
@@ -37,7 +37,7 @@ export const Chat: FC = observer(() => {
           {author}: {text} ({createdAt})
         </div>
       ))}
-      <Formik initialValues={{ message: '' }} onSubmit={onSubmit}>
+      <Formik initialValues={{ message: '' }} onSubmit={handleSubmit}>
         {({ setFieldValue }) => {
           setInputValueRef.current = setFieldValue
 

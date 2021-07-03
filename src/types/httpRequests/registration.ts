@@ -1,6 +1,6 @@
 interface IRegistrationSuccess {
   ok: true
-  message: string
+  message: 'User registered successfully'
 }
 
 export interface IRegistrationError {

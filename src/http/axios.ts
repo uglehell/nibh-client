@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { ACCESS_TOKEN } from '../constants/storage'
 import { API_URL } from '../constants/url-addresses'
 import { storage } from '../utils/storage'
 
@@ -14,6 +15,6 @@ http.interceptors.response.use(
 )
 
 http.interceptors.request.use((request) => {
-  request.headers.Authorization = `Bearer ${storage.get('accessToken')}`
+  request.headers.Authorization = `Bearer ${storage.get(ACCESS_TOKEN)}`
   return request
 })
