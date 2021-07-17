@@ -19,9 +19,10 @@ export const ErrorPopup: FC<IErrorPopupProps> = ({ text, id }) => {
 
   const disappearErrorPopup = useCallback(() => {
     setIsActive(false)
+    
     setTimeout(() => {
       errorState.removeErrorPopup(id)
-    }, timings.errorPopupDisappear)
+    }, timings.errorPopupAppearance)
   }, [id])
 
   useEffect(() => {
@@ -35,7 +36,7 @@ export const ErrorPopup: FC<IErrorPopupProps> = ({ text, id }) => {
         <span className={styles.titleText}>Error</span>
       </h1>
       <div className={styles.text}>{text}</div>
-      <Button handleClick={disappearErrorPopup} value="OK" />
+      <Button isStretched handleClick={disappearErrorPopup} value="OK" />
     </div>
   )
 }

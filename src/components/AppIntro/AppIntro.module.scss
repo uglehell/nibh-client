@@ -1,0 +1,49 @@
+@import '../../styles/variables';
+@import '../../styles/transitionTimings';
+
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $white;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: all;
+  animation: disappear $intro-disappear-animation forwards $intro-title-animation;
+
+  @keyframes disappear {
+    0% {
+      opacity: 1;
+      pointer-events: none;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+.title {
+  font-size: 52px;
+  letter-spacing: 20px;
+  animation: introTitleAnimation $intro-title-animation forwards;
+  text-align: center;
+
+  @keyframes introTitleAnimation {
+    0% {
+      letter-spacing: 2em;
+      color: $bg;
+    }
+    100% {
+      letter-spacing: 0.11em;
+      color: $border-color;
+    }
+  }
+}
+
+.lastLetter {
+  letter-spacing: 0;
+}

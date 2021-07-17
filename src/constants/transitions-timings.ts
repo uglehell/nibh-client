@@ -1,6 +1,7 @@
 export const timings = {
   pageTransition: 1000,
   inputError: 500,
-  errorPopupDisappear: 500,
-  errorPopupLiveTime: 5000,
+  errorPopupAppearance: 500,
+  errorPopupLiveTime: 6000,
+  introAnimation: 2700,
 }
