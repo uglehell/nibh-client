@@ -1,10 +1,10 @@
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 import { Field, Form, Formik } from 'formik'
 import { EWsRequestTypes, TWsRequest } from '../../types/wsActions/wsRequest'
 import userState from '../../store/userState'
-import { useRef } from 'react'
 import appState from '../../store/appState'
 import { observer } from 'mobx-react-lite'
+import { useTitleSetter } from '../../hooks/useTitleSetter'
 
 interface IValues {
   message: string
@@ -29,6 +29,8 @@ export const Chat: FC = observer(() => {
 
     setInputValueRef.current?.('message', '')
   }
+
+  useTitleSetter('Chat')
 
   return (
     <div>

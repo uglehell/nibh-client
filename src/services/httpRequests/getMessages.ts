@@ -1,4 +1,5 @@
 import { AxiosError } from 'axios'
+import { errorMessages } from '../../constants/error-messages'
 import http from '../../http'
 import { EApiPaths } from '../../router/constants'
 import { IGetMessagesError, TGetMessagesResponse } from '../../types/httpRequests/getMessages'
@@ -14,7 +15,7 @@ export const getMessages = async (): Promise<TGetMessagesResponse> => {
     if (!error.response) {
       return {
         ok: false,
-        message: 'Network error',
+        message: errorMessages.networkError,
       }
     }
     return { ok: false }

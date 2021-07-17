@@ -1,6 +1,6 @@
-import appState from "../store/appState"
-import userState from "../store/userState"
-import { disconnectWsClient } from "./disconnectWsClient"
+import appState from '../store/appState'
+import userState from '../store/userState'
+import { disconnectWsClient } from './disconnectWsClient'
 
 export const logout = () => {
   disconnectWsClient()

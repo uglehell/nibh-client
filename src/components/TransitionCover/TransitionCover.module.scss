@@ -1,0 +1,30 @@
+@import '../../styles/variables';
+@import '../../styles/transitionTimings';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: $white;
+  pointer-events: none;
+  opacity: 0;
+
+  &_animating {
+    animation: coverAnimation $transition-cover-animation ease-in;
+    pointer-events: all;
+
+    @keyframes coverAnimation {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+  }
+}

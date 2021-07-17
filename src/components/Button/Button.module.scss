@@ -1,0 +1,56 @@
+@import '../../styles/variables';
+@import '../../styles/transitionTimings';
+
+.button {
+  display: inline-block;
+  height: 60px;
+  border-radius: 30px;
+  border: $border;
+  background: $bg;
+  font-size: 19px;
+  transition: $button-click-transition;
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &Container {
+    position: relative;
+  }
+
+  &Decor {
+    position: absolute;
+    pointer-events: none;
+    animation: buttonDecorClick linear $button-decor-click-animation forwards;
+    background: $bg;
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+
+    @keyframes buttonDecorClick {
+      from {
+        opacity: 1;
+        transform: scale(1);
+      }
+      to {
+        opacity: 0;
+        transform: scaleX(1.15) scaleY(1.6);
+      }
+    }
+  }
+
+  &_stretched {
+    display: block;
+    width: 100%;
+  }
+
+  &_color {
+    &_blue {
+      background: $blue;
+    }
+
+    &_red {
+      background: $red;
+    }
+  }
+}

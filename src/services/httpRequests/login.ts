@@ -1,4 +1,5 @@
 import { AxiosError } from 'axios'
+import { errorMessages } from '../../constants/error-messages'
 import http from '../../http'
 import { EApiPaths } from '../../router/constants'
 import { ILoginError, TLoginResponse } from '../../types/httpRequests/login'
@@ -17,7 +18,7 @@ export const login = async (username: string, password: string): Promise<TLoginR
     if (!error.response) {
       return {
         ok: false,
-        message: 'Network error',
+        message: errorMessages.networkError,
         errors: [],
       }
     }

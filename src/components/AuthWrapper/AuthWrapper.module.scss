@@ -1,0 +1,34 @@
+.container {
+  text-align: center;
+  padding: 8vh 6.25vw 6.25vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.form {
+  position: relative;
+  top: -4vh;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 48px;
+}
+
+.submitButton {
+  margin-top: 32px;
+}
+
+.field {
+  &_1 {
+    margin-top: max(4vh, 32px);
+  }
+
+  &_2 {
+    margin-top: 14px;
+  }
+}

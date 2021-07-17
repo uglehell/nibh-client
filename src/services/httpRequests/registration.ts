@@ -1,4 +1,5 @@
 import { AxiosError } from 'axios'
+import { errorMessages } from '../../constants/error-messages'
 import http from '../../http'
 import { EApiPaths } from '../../router/constants'
 import { IRegistrationError, TRegistrationResponse } from '../../types/httpRequests/registration'
@@ -20,7 +21,7 @@ export const registration = async (
     if (!error.response) {
       return {
         ok: false,
-        message: 'Network error',
+        message: errorMessages.networkError,
         errors: [],
       }
     }

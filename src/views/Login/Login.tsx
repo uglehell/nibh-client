@@ -1,23 +1,21 @@
-import { FC } from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { FC, useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { EPaths } from '../../router/constants'
-import { Formik, Form, Field } from 'formik'
 import { login } from '../../services/httpRequests/login'
 import { storage } from '../../utils/storage'
 import { ACCESS_TOKEN } from '../../constants/storage'
 import userState from '../../store/userState'
 import authState from '../../store/authState'
-import { LoginSchema } from '../../constants/login-schema'
-
-interface IValues {
-  username: string
-  password: string
-}
+import AuthWrapper from '../../components/AuthWrapper'
+import { IAuthFormValues } from '../../components/AuthWrapper/AuthWrapper'
+import { handleAuthError } from '../../utils/handleAuthError'
+import { useTitleSetter } from '../../hooks/useTitleSetter'
 
 export const Login: FC = () => {
   const history = useHistory()
+  const [loginError, setLoginError] = useState('')
 
-  const handleSubmit = async ({ username, password }: IValues) => {
+  const handleSubmit = async ({ username, password }: IAuthFormValues) => {
     const loginResponse = await login(username, password)
 
     if (loginResponse.ok) {
@@ -28,28 +26,22 @@ export const Login: FC = () => {
       authState.setPassword('')
 
       history.push(EPaths.home)
+      return
     }
+
+    handleAuthError(loginResponse.message, setLoginError)
   }
 
+  useTitleSetter('Login')
+
   return (
-    <div>
-      <div>Login</div>
-      <Formik
-        initialValues={{ username: authState.username, password: authState.password }}
-        validationSchema={LoginSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, touched }) => (
-          <Form>
-            {errors.username && touched.username && <span>{errors.username}</span>}
-            <Field name="username" />
-            {errors.password && touched.password && <span>{errors.password}</span>}
-            <Field name="password" type="password"></Field>
-            <button type="submit">submit</button>
-          </Form>
-        )}
-      </Formik>
-      <Link to={EPaths.registration}>Go to registration</Link>
-    </div>
+    <AuthWrapper
+      authError={loginError}
+      title="Login"
+      handleSubmit={handleSubmit}
+      redirectPath={EPaths.registration}
+      redirectLinkText="Go to Registration"
+      setAuthError={setLoginError}
+    />
   )
 }

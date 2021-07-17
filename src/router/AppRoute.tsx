@@ -1,5 +1,10 @@
+import { observer } from 'mobx-react-lite'
 import { FC } from 'react'
 import { Switch } from 'react-router-dom'
+import ErrorPopup from '../components/ErrorPopup'
+import PcVersionInfo from '../components/PcVersionInfo'
+import TransitionCover from '../components/TransitionCover'
+import { IS_PC } from '../constants/app-constants'
 import { useUserGetHandler } from '../hooks/useUserGetHandler'
 import errorState from '../store/errorState'
 import Login from '../views/Login'
@@ -7,25 +12,28 @@ import Registration from '../views/Registration'
 import AuthRoute from './AuthRoute'
 import { EPaths } from './constants'
 import ContentRoute from './ContentRoute'
-import ErrorPopup from '../components/ErrorPopup'
 
-const AppRoute: FC = () => {
+const AppRoute: FC = observer(() => {
   useUserGetHandler()
-  errorState.addErrorPopup({
-    element: <ErrorPopup isActive text="test" key={Date.now()} />,
-    id: Date.now(),
-  })
+
+  // WIP
+  if (IS_PC && false) {
+    return <PcVersionInfo />
+  }
 
   return (
     <>
-      {errorState.popupsArray.map((popup) => popup.element)}
       <Switch>
         <AuthRoute path={EPaths.login} component={Login} />
         <AuthRoute path={EPaths.registration} component={Registration} />
         <ContentRoute />
       </Switch>
+      {errorState.popupsArray.map(({ text, id }) => (
+        <ErrorPopup id={id} text={text} key={id} />
+      ))}
+      <TransitionCover />
     </>
   )
-}
+})
 
 export default AppRoute

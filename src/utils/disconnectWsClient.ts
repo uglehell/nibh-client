@@ -1,4 +1,4 @@
-import appState from "../store/appState"
+import appState from '../store/appState'
 
 export const disconnectWsClient = () => {
   appState.wsClient?.close()

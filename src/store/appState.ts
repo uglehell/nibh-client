@@ -1,4 +1,5 @@
 import { makeAutoObservable } from 'mobx'
+import { TransitionCover } from '../hooks/useTransitionCover'
 import WsClient from '../services/wsClient/wsClient'
 
 export interface IMessage {
@@ -20,6 +21,7 @@ class AppState {
   messages: IMessage[] = []
   onlineUsers: IOnlineUser[] = []
   wsClient: WsClient | null = null
+  transitionCover: TransitionCover | null = null
 
   constructor() {
     makeAutoObservable(this)
@@ -47,6 +49,10 @@ class AppState {
 
   setWsClient = (payload: WsClient | null) => {
     this.wsClient = payload
+  }
+
+  setTransitionCover = (payload: TransitionCover) => {
+    this.transitionCover = payload
   }
 }
 

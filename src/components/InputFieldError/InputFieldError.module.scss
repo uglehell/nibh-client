@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+@import '../../styles/transitionTimings';
+
+// WIP
+.message,
+.helper {
+  color: $red;
+  position: absolute;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(-4px);
+  text-transform: lowercase;
+}
+
+.message {
+  transition: $input-field-error-transition; //$input-field-error-empty-transition;
+
+  &_active {
+    transition: $input-field-error-transition;
+  }
+}
+
+.helper {
+  transition: $input-field-error-empty-transition;
+
+  &_active {
+    transition: $input-field-error-empty-transition;
+  }
+}
+
+.message_active,
+.helper_active {
+  opacity: 1;
+  transform: translateY(0px);
+}

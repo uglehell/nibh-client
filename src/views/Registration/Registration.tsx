@@ -1,10 +1,11 @@
-import { FC } from 'react'
-import { LoginSchema } from '../../constants/login-schema'
+import { FC, useState } from 'react'
 import authState from '../../store/authState'
-import { Formik, Field, Form } from 'formik'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { EPaths } from '../../router/constants'
 import { registration } from '../../services/httpRequests/registration'
+import AuthWrapper from '../../components/AuthWrapper'
+import { handleAuthError } from '../../utils/handleAuthError'
+import { useTitleSetter } from '../../hooks/useTitleSetter'
 
 interface IValues {
   username: string
@@ -13,6 +14,7 @@ interface IValues {
 
 export const Registration: FC = () => {
   const history = useHistory()
+  const [registrationError, setRegistrationError] = useState('')
 
   const handleSubmit = async ({ username, password }: IValues) => {
     const registrationResponse = await registration(username, password)
@@ -22,27 +24,22 @@ export const Registration: FC = () => {
       authState.setPassword(password)
 
       history.push(EPaths.login)
+      return
     }
+
+    handleAuthError(registrationResponse.message, setRegistrationError)
   }
+
+  useTitleSetter('Registration')
+
   return (
-    <div>
-      Registration
-      <Formik
-        initialValues={{ username: '', password: '' }}
-        validationSchema={LoginSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ errors, touched }) => (
-          <Form>
-            {errors.username && touched.username && <span>{errors.username}</span>}
-            <Field name="username" />
-            {errors.password && touched.password && <span>{errors.password}</span>}
-            <Field name="password"></Field>
-            <button type="submit">submit</button>
-          </Form>
-        )}
-      </Formik>
-      <Link to={EPaths.registration}>Go to login</Link>
-    </div>
+    <AuthWrapper
+      authError={registrationError}
+      title="Registration"
+      handleSubmit={handleSubmit}
+      redirectPath={EPaths.login}
+      redirectLinkText="Go to Login"
+      setAuthError={setRegistrationError}
+    />
   )
 }

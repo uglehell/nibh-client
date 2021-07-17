@@ -1,8 +1,7 @@
 import { makeAutoObservable } from 'mobx'
-import { ReactElement } from 'react'
 
 interface IPopup {
-  element: ReactElement,
+  text: string
   id: number
 }
 
@@ -28,7 +27,7 @@ class ErrorState {
   }
 
   removeErrorPopup = (id: number) => {
-    this.popupsArray = this.popupsArray.filter(popup => popup.id !== id) // WIP
+    this.popupsArray = this.popupsArray.filter(({ id: popupId }) => popupId !== id)
   }
 }
 
