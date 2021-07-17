@@ -22,6 +22,7 @@ class AppState {
   onlineUsers: IOnlineUser[] = []
   wsClient: WsClient | null = null
   transitionCover: TransitionCover | null = null
+  isSettingsActive = false
 
   constructor() {
     makeAutoObservable(this)
@@ -53,6 +54,10 @@ class AppState {
 
   setTransitionCover = (payload: TransitionCover) => {
     this.transitionCover = payload
+  }
+
+  setIsSettingsActive = (payload: boolean) => {
+    this.isSettingsActive = payload
   }
 }
 

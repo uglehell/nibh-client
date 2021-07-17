@@ -1,11 +1,12 @@
 import { FC, useState } from 'react'
 import authState from '../../store/authState'
-import { useHistory } from 'react-router-dom'
 import { EPaths } from '../../router/constants'
 import { registration } from '../../services/httpRequests/registration'
 import AuthWrapper from '../../components/AuthWrapper'
 import { handleAuthError } from '../../utils/handleAuthError'
 import { useTitleSetter } from '../../hooks/useTitleSetter'
+import appState from '../../store/appState'
+import { EPageNames } from '../../constants/app-constants'
 
 interface IValues {
   username: string
@@ -13,7 +14,6 @@ interface IValues {
 }
 
 export const Registration: FC = () => {
-  const history = useHistory()
   const [registrationError, setRegistrationError] = useState('')
 
   const handleSubmit = async ({ username, password }: IValues) => {
@@ -23,14 +23,14 @@ export const Registration: FC = () => {
       authState.setUsername(username)
       authState.setPassword(password)
 
-      history.push(EPaths.login)
+      appState.transitionCover?.redirect(EPaths.login)
       return
     }
 
     handleAuthError(registrationResponse.message, setRegistrationError)
   }
 
-  useTitleSetter('Registration')
+  useTitleSetter(EPageNames.registration)
 
   return (
     <AuthWrapper

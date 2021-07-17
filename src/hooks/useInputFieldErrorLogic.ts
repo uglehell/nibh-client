@@ -7,22 +7,15 @@ interface IUseInputFieldErrorLogicParams {
   setMessage: Dispatch<SetStateAction<string>>
   isMessageActive: boolean
   setIsMessageActive: Dispatch<SetStateAction<boolean>>
-  // helper: string
-  // setHelper: Dispatch<SetStateAction<string>>
-  // setIsHelperActive: Dispatch<SetStateAction<boolean>>
 }
 
-// WIP
 export const useInputFieldErrorLogic = ({
   error,
   message,
   setMessage,
   isMessageActive,
   setIsMessageActive,
-}: // helper,
-// setHelper,
-// setIsHelperActive,
-IUseInputFieldErrorLogicParams) => {
+}: IUseInputFieldErrorLogicParams) => {
   useEffect(() => {
     if (error !== message) {
       setIsMessageActive(!!error)

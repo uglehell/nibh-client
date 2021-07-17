@@ -1,10 +1,11 @@
 import { observer } from 'mobx-react-lite'
 import { FC } from 'react'
+import { EPageNames } from '../../constants/app-constants'
 import { useTitleSetter } from '../../hooks/useTitleSetter'
 import appState from '../../store/appState'
 
 export const OnlineUsers: FC = observer(() => {
-  useTitleSetter('Online users')
+  useTitleSetter(EPageNames.onlineUsers)
 
   return (
     <div>

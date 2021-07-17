@@ -5,6 +5,7 @@ import userState from '../../store/userState'
 import appState from '../../store/appState'
 import { observer } from 'mobx-react-lite'
 import { useTitleSetter } from '../../hooks/useTitleSetter'
+import { EPageNames } from '../../constants/app-constants'
 
 interface IValues {
   message: string
@@ -30,7 +31,7 @@ export const Chat: FC = observer(() => {
     setInputValueRef.current?.('message', '')
   }
 
-  useTitleSetter('Chat')
+  useTitleSetter(EPageNames.chat)
 
   return (
     <div>

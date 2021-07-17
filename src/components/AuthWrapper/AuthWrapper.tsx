@@ -1,5 +1,5 @@
-import { ChangeEvent, Dispatch, FC, SetStateAction, useState } from 'react'
-import { LoginSchema } from '../../constants/login-schema'
+import { Dispatch, FC, SetStateAction, useState } from 'react'
+import { LoginSchema } from '../../constants/validation-schemas'
 import authState from '../../store/authState'
 import styles from './AuthWrapper.module.scss'
 import { Formik, Form } from 'formik'
@@ -8,6 +8,11 @@ import Button from '../Button'
 import appState from '../../store/appState'
 import { EButtonColors, EButtonTypes, EInputTypes } from '../../constants/ui-elements-params'
 import { useAuthErrorChangeHandler } from '../../hooks/useAuthErrorChangeHandler'
+import {
+  generateInputErrorProp,
+  generateInputIsTouchedProp,
+  handleFieldChange,
+} from '../../utils/inputFieldPropsGenerators'
 
 enum ETextValues {
   password = 'password',
@@ -29,11 +34,6 @@ interface IAuthWrapperProps {
   setAuthError: Dispatch<SetStateAction<string>>
 }
 
-const generateInputErrorProp = (validationError: string | undefined, authError: string) =>
-  validationError ?? authError
-
-const generateInputIsTouchedProp = (isTouched: boolean | undefined) => !!isTouched
-
 export const AuthWrapper: FC<IAuthWrapperProps> = ({
   handleSubmit,
   title,
@@ -51,17 +51,6 @@ export const AuthWrapper: FC<IAuthWrapperProps> = ({
 
   useAuthErrorChangeHandler(setUsernameError, setPasswordError, authError)
 
-  const handleFieldChange =
-    (
-      setError: Dispatch<SetStateAction<string>>,
-      handleChange: (event: string | ChangeEvent<any>) => void
-    ) =>
-    (event: string | ChangeEvent<any>) => {
-      setAuthError('')
-      setError('')
-      handleChange(event)
-    }
-
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>{title}</h1>
@@ -74,7 +63,7 @@ export const AuthWrapper: FC<IAuthWrapperProps> = ({
           <Form className={styles.form}>
             <div className={styles.field_1}>
               <InputField
-                handleChange={handleFieldChange(setUsernameError, handleChange)}
+                handleChange={handleFieldChange(handleChange, setAuthError, setUsernameError)}
                 name={ETextValues.username}
                 title={ETextValues.nickname}
                 isTouched={generateInputIsTouchedProp(touched.username)}
@@ -83,7 +72,7 @@ export const AuthWrapper: FC<IAuthWrapperProps> = ({
             </div>
             <div className={styles.field_2}>
               <InputField
-                handleChange={handleFieldChange(setPasswordError, handleChange)}
+                handleChange={handleFieldChange(handleChange, setAuthError, setPasswordError)}
                 name={ETextValues.password}
                 type={EInputTypes.password}
                 title={ETextValues.password}

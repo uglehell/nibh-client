@@ -13,6 +13,8 @@ interface IInputFieldProps {
   isTouched: boolean
   error: string | null
   handleChange: (e: string | ChangeEvent<any>) => void
+  isLarge?: boolean
+  placeholder?: string
 }
 
 export const InputField: FC<IInputFieldProps> = ({
@@ -22,6 +24,8 @@ export const InputField: FC<IInputFieldProps> = ({
   isTouched,
   error,
   handleChange,
+  placeholder,
+  isLarge,
 }) => {
   const [fieldType, setFieldType] = useState<EInputTypes>(type)
   const isPassword = type === EInputTypes.password
@@ -40,7 +44,12 @@ export const InputField: FC<IInputFieldProps> = ({
       <Field
         name={name}
         type={fieldType}
-        className={classNames(styles.field, error && isTouched && styles.field_invalid)}
+        placeholder={placeholder}
+        className={classNames(
+          styles.field,
+          error && isTouched && styles.field_invalid,
+          isLarge && styles.field_large
+        )}
         onChange={handleChange}
       />
       {isPassword && (
