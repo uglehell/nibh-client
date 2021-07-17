@@ -1,3 +1,3 @@
-import { InputFieldError } from './InputFieldError'
+import { InputFieldInfo } from './InputFieldError'
 
-export default InputFieldError
+export default InputFieldInfo

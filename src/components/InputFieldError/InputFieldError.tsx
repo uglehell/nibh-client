@@ -3,17 +3,14 @@ import { useState, FC } from 'react'
 import { useInputFieldErrorLogic } from '../../hooks/useInputFieldErrorLogic'
 import styles from './InputFieldError.module.scss'
 
-interface IInputFieldErrorProps {
+interface IInputFieldInfoProps {
   error: string | null
   isTouched: boolean
 }
 
-// WIP
-export const InputFieldError: FC<IInputFieldErrorProps> = ({ error, isTouched }) => {
+export const InputFieldInfo: FC<IInputFieldInfoProps> = ({ error, isTouched }) => {
   const [message, setMessage] = useState('')
   const [isMessageActive, setIsMessageActive] = useState(true)
-  // const [helper, setHelper] = useState('')
-  // const [isHelperActive, setIsHelperActive] = useState(true)
 
   useInputFieldErrorLogic({
     error,
@@ -21,9 +18,6 @@ export const InputFieldError: FC<IInputFieldErrorProps> = ({ error, isTouched })
     setMessage,
     isMessageActive,
     setIsMessageActive,
-    // helper,
-    // setHelper,
-    // setIsHelperActive,
   })
 
   return (
@@ -36,14 +30,6 @@ export const InputFieldError: FC<IInputFieldErrorProps> = ({ error, isTouched })
       >
         {message}
       </div>
-      {/* <div
-        className={classNames(
-          styles.helper,
-          isHelperActive && isTouched && styles.helper_active
-        )}
-      >
-        {helper}
-      </div> */}
     </>
   )
 }

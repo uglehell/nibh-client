@@ -19,7 +19,7 @@ export const ErrorPopup: FC<IErrorPopupProps> = ({ text, id }) => {
 
   const disappearErrorPopup = useCallback(() => {
     setIsActive(false)
-    
+
     setTimeout(() => {
       errorState.removeErrorPopup(id)
     }, timings.errorPopupAppearance)

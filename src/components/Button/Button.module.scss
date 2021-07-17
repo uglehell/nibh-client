@@ -9,6 +9,9 @@
   background: $bg;
   font-size: 19px;
   transition: $button-click-transition;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:active {
     transform: scale(0.98);
@@ -37,11 +40,30 @@
         transform: scaleX(1.15) scaleY(1.6);
       }
     }
+
+    &_rounded {
+      animation-name: buttonDecorClickRounded;
+
+      @keyframes buttonDecorClickRounded {
+        from {
+          opacity: 1;
+          transform: scale(1);
+        }
+        to {
+          opacity: 0;
+          transform: scale(1.6);
+        }
+      }
+    }
   }
 
   &_stretched {
     display: block;
     width: 100%;
+  }
+
+  &_rounded {
+    width: 60px;
   }
 
   &_color {

@@ -1,5 +1,4 @@
 import { FC, useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import { EPaths } from '../../router/constants'
 import { login } from '../../services/httpRequests/login'
 import { storage } from '../../utils/storage'
@@ -10,9 +9,10 @@ import AuthWrapper from '../../components/AuthWrapper'
 import { IAuthFormValues } from '../../components/AuthWrapper/AuthWrapper'
 import { handleAuthError } from '../../utils/handleAuthError'
 import { useTitleSetter } from '../../hooks/useTitleSetter'
+import appState from '../../store/appState'
+import { EPageNames } from '../../constants/app-constants'
 
 export const Login: FC = () => {
-  const history = useHistory()
   const [loginError, setLoginError] = useState('')
 
   const handleSubmit = async ({ username, password }: IAuthFormValues) => {
@@ -25,14 +25,14 @@ export const Login: FC = () => {
       authState.setUsername('')
       authState.setPassword('')
 
-      history.push(EPaths.home)
+      appState.transitionCover?.redirect(EPaths.home)
       return
     }
 
     handleAuthError(loginResponse.message, setLoginError)
   }
 
-  useTitleSetter('Login')
+  useTitleSetter(EPageNames.login)
 
   return (
     <AuthWrapper
