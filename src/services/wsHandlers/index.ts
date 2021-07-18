@@ -11,8 +11,4 @@ export const onMessageHandler = (event: TWsEvent) => {
 
 export const onErrorHandler = (event: Event) => {}
 
-export const onOpenHandler = (event: Event) => {
-  onlineUsersWsHandler.onOpen(event)
-}
-
 export const onCloseHandler = (event: Event) => {}

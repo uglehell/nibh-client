@@ -48,20 +48,22 @@ export const Button: FC<IButtonProps> = ({
           className={classNames(styles.buttonDecor, isRounded && styles.buttonDecor_rounded)}
         />
       ))}
-      <button
-        onClick={handleClick}
-        type={type}
-        className={classNames(
-          styles.button,
-          isStretched && styles.button_stretched,
-          isRounded && styles.button_rounded,
-          color === EButtonColors.blue && styles.button_color_blue,
-          color === EButtonColors.red && styles.button_color_red
-        )}
-      >
-        {children}
-        {value && <span className={styles.value}>{value}</span>}
-      </button>
+      <div className={styles.wrapper}>
+        <button
+          onClick={handleClick}
+          type={type}
+          className={classNames(
+            styles.button,
+            isStretched && styles.button_stretched,
+            isRounded && styles.button_rounded,
+            color === EButtonColors.blue && styles.button_color_blue,
+            color === EButtonColors.red && styles.button_color_red
+          )}
+        >
+          {children}
+          {value && <span className={styles.value}>{value}</span>}
+        </button>
+      </div>
     </div>
   )
 }

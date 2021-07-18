@@ -10,10 +10,13 @@ import { observer } from 'mobx-react-lite'
 import { useAppInitializer } from '../hooks/useAppInitializer'
 import SettingsButton from '../components/SettingsButton'
 import Settings from '../components/Settings'
+import Menu from '../components/Menu'
+import { useOnlineUsersGetter } from '../hooks/useOnlineUsersGetter'
 
 const ContentRoute: FC = observer(() => {
   useAppInitializer()
   const defaultPath = useDefaultPathGenerator()
+  useOnlineUsersGetter()
 
   return (
     <Route>
@@ -25,6 +28,7 @@ const ContentRoute: FC = observer(() => {
           <Redirect to={defaultPath} />
         </Route>
       </Switch>
+      <Menu />
       <Settings />
       <SettingsButton />
     </Route>

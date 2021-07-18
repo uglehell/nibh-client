@@ -1,0 +1,31 @@
+@import '../../styles/transitionTimings';
+
+.button {
+  width: 100%;
+  border: none;
+  background: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  opacity: 0.35;
+  transition: $transition-cover-animation;
+
+  &_active {
+    opacity: 1;
+  }
+
+  &_position {
+    &_left {
+      position: relative;
+      left: 13%;
+    }
+    
+    &_right {
+      position: relative;
+      right: 13%;
+    }
+  }
+}
