@@ -22,6 +22,8 @@ export const Login: FC = () => {
       storage.set(ACCESS_TOKEN, loginResponse.accessToken)
 
       userState.setIsAuthenticated(true)
+      userState.setUsername(username)
+      userState.setId(loginResponse.id)
       authState.setUsername('')
       authState.setPassword('')
 

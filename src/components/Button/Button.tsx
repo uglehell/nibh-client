@@ -1,9 +1,8 @@
 import { FC } from 'react'
 import styles from './Button.module.scss'
 import classNames from 'classnames'
-import { useState } from 'react'
 import { EButtonColors, EButtonTypes } from '../../constants/ui-elements-params'
-import { timings } from '../../constants/transitions-timings'
+import { useButtonDecors } from '../../hooks/useButtonDecors'
 
 interface IButtonProps {
   color?: EButtonColors
@@ -23,17 +22,7 @@ export const Button: FC<IButtonProps> = ({
   isRounded = false,
   children,
 }) => {
-  const [buttonDecorsIdList, setButtonDecorsIdList] = useState<number[]>([])
-
-  const addButtonDecor = () => {
-    const newDecorItemId = Date.now()
-
-    setButtonDecorsIdList((prevState) => [...prevState, newDecorItemId])
-
-    setTimeout(() => {
-      setButtonDecorsIdList((prevState) => prevState.filter((id) => id !== newDecorItemId))
-    }, timings.buttonDecorAnimation)
-  }
+  const { addButtonDecor, buttonDecorsIdList } = useButtonDecors()
 
   const handleClick = () => {
     addButtonDecor()

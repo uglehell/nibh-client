@@ -1,9 +1,13 @@
-@import '../../styles//variables';
+@import '../../styles/variables';
+@import '../../styles/mixins';
+@import '../../styles/transitionTimings';
 
 .container {
   height: 37vh;
   width: 37vh;
   margin: 20px 0;
+  user-select: none;
+  position: relative;
 }
 
 .button {
@@ -29,5 +33,22 @@
 @media (min-width: 360px) {
   .clicks {
     font-size: 72px;
+  }
+}
+
+.decor {
+  @include buttonDecor;
+  border-radius: 50%;
+  animation: buttonDecorClick linear $button-decor-click-animation forwards;
+
+  @keyframes buttonDecorClick {
+    from {
+      opacity: 0.7;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(1.4);
+    }
   }
 }

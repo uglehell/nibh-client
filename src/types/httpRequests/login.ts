@@ -1,6 +1,7 @@
 interface ILoginSuccess {
   ok: true
   accessToken: string
+  id: string
 }
 
 export interface ILoginError {

@@ -7,7 +7,7 @@ export const LogoutButton: FC = () => {
   const handleClick = () => {
     logout()
   }
-  
+
   return (
     <button className={styles.button} onClick={handleClick}>
       <span className={styles.text}>Logout</span>

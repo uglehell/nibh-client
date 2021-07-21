@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 @import '../../styles/transitionTimings';
 
 .button {
@@ -22,17 +23,13 @@
   }
 
   &Decor {
-    position: absolute;
-    pointer-events: none;
+    @include buttonDecor;
     animation: buttonDecorClick linear $button-decor-click-animation forwards;
-    background: $bg;
-    width: 100%;
-    height: 100%;
     border-radius: 30px;
 
     @keyframes buttonDecorClick {
       from {
-        opacity: 1;
+        opacity: 0.7;
         transform: scale(1);
       }
       to {

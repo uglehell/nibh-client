@@ -23,6 +23,7 @@ class AppState {
   wsClient: WsClient | null = null
   transitionCover: TransitionCover | null = null
   isSettingsActive = false
+  isLoading = false
 
   constructor() {
     makeAutoObservable(this)
@@ -58,6 +59,10 @@ class AppState {
 
   setIsSettingsActive = (payload: boolean) => {
     this.isSettingsActive = payload
+  }
+
+  setIsLoading = (payload: boolean) => {
+    this.isLoading = payload
   }
 }
 
