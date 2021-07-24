@@ -19,6 +19,7 @@ class AppState {
   lastClick = ''
   isMessagesRead = true
   messages: IMessage[] = []
+  messagesContainerHeight = 0
   onlineUsers: IOnlineUser[] = []
   wsClient: WsClient | null = null
   transitionCover: TransitionCover | null = null
@@ -63,6 +64,10 @@ class AppState {
 
   setIsLoading = (payload: boolean) => {
     this.isLoading = payload
+  }
+
+  setMessagesContainerHeight = (payload: number) => {
+    this.messagesContainerHeight = payload
   }
 }
 

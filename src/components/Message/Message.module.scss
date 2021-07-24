@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+@import '../../styles/transitionTimings';
+
+.container {
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: $bg;
+  margin-top: 25px;
+  padding: 16px 19px;
+  font-size: 14px;
+  max-width: 87.5vw;
+  animation: appearance $message-appearance-animation forwards ease-out;
+
+  @keyframes appearance {
+    from {
+      opacity: 0;
+      transform: translateY(15px);
+    } to {
+      opacity: 1;
+    }
+  }
+
+  &_sended {
+    align-self: flex-end;
+    background: $blue;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.author {
+  font-weight: 500;
+  margin-right: 15px;
+}
+
+.time {
+  color: $light-black;
+  opacity: 0.5;
+}
+
+.text {
+  margin-top: 5px;
+  word-wrap: break-word;
+}

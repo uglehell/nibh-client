@@ -1,0 +1,65 @@
+@import '../../styles/variables';
+@import '../../styles/transitionTimings';
+@import '../../styles/mixins';
+
+.container {
+  position: fixed;
+  bottom: 91px;
+  width: calc(100% - 20px);
+  opacity: 0;
+  transition: $message-input-field-transition;
+  transform: translateY(15px);
+  pointer-events: none;
+
+  &_active {
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: all;
+  }
+}
+
+.form {
+  height: 60px;
+  border-radius: $button-border-radius;
+  background: $bg;
+
+  &Cover {
+    @include messageInputFieldCover;
+  }
+}
+
+.field {
+  width: calc(100% - 78px);
+  padding: 0;
+  border: none;
+  font-size: 16px;
+  height: 100%;
+  background: none;
+  padding: 0 10px 0 26px;
+  box-sizing: border-box;
+}
+
+.sendButton {
+  position: absolute;
+  width: 78px;
+  bottom: 0;
+  right: 0;
+
+  &Cover {
+    @include messageInputFieldCover;
+  }
+}
+
+@media (min-width: 340px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .sendButton {
+    width: 89px;
+  }
+
+  .field {
+    width: calc(100% - 89px);
+  }
+}

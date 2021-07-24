@@ -6,4 +6,5 @@ export const timings = {
   introAnimation: 2700,
   buttonDecorAnimation: 500,
   settingsSubmitAnimation: 1300,
+  pcInfoDotsIntervalDelay: 700,
 }

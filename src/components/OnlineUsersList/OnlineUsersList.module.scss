@@ -1,0 +1,26 @@
+@import '../../styles/variables';
+
+.container {
+  margin-top: 34px;
+  padding-left: 24px;
+}
+
+.user {
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 11px;
+  list-style: none;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: $light-black;
+    top: 50%;
+    left: -24px;
+    transform: translateY(-50%);
+  }
+}

@@ -1,0 +1,25 @@
+@import '../../styles/transitionTimings';
+
+.container {
+  position: fixed;
+  bottom: 91px;
+  right: 10px;
+  opacity: 0;
+  transition: $message-input-field-transition;
+  transform: translateY(15px);
+
+  &_active {
+    opacity: 0.9;
+    transform: translateY(0px);
+  }
+}
+
+.image {
+  transform: translateY(1px);
+}
+
+@media (min-width: 340px) {
+  .container {
+    right: 12px;
+  }
+}

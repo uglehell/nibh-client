@@ -7,3 +7,20 @@
   width: 100%;
   height: 100%;
 }
+
+@mixin messageInputFieldCover {
+  transition: $input-field-transition;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  border-radius: $button-border-radius;
+  border: $border;
+  pointer-events: none;
+
+  &_active {
+    border-color: $border-color-focused;
+  }
+}

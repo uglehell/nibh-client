@@ -3,9 +3,11 @@ import { EPaths } from '../router/constants'
 import appState from '../store/appState'
 import userState from '../store/userState'
 import { disconnectWsClient } from './disconnectWsClient'
+import { storage } from './storage'
 
 export const logout = () => {
   disconnectWsClient()
+  storage.clear()
   appState.transitionCover?.redirect(EPaths.login)
 
   setTimeout(() => {

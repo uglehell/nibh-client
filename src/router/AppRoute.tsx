@@ -19,8 +19,7 @@ const AppRoute: FC = observer(() => {
   useUserGetHandler()
   const isAppStarting = useAppStarter()
 
-  // WIP
-  if (IS_PC && false) {
+  if (IS_PC) {
     return <PcVersionInfo />
   }
 
