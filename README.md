@@ -34,4 +34,4 @@ characteristics:
   * CSS animations (transition, keyframes)
   * Mobile first
 
-P.S. The PC version is currently not available, but you can use devtools to simulate a mobile device 
+## P.S. The PC version is currently not available, but you can use devtools to simulate a mobile device 
