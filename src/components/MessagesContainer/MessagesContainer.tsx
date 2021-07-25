@@ -18,8 +18,8 @@ export const MessagesContainer: FC = observer(() => {
 
   return (
     <div className={styles.container}>
-      {appState.messages.map(({ author, createdAt, id, text }) => (
-        <Message key={id} author={author} text={text} createdAt={createdAt} />
+      {appState.messages.map(({ author, createdAt, id, text, authorId }) => (
+        <Message key={id} author={author} text={text} createdAt={createdAt} authorId={authorId} />
       ))}
       <div className={styles.placeholder} ref={placeholderRef}></div>
       {/* WIP */}

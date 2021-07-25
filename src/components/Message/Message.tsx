@@ -8,10 +8,11 @@ interface IMessageProps {
   author: string
   text: string
   createdAt: string
+  authorId: string
 }
 
-export const Message: FC<IMessageProps> = ({ author, text, createdAt }) => {
-  const isSended = author === userState.username
+export const Message: FC<IMessageProps> = ({ author, text, createdAt, authorId }) => {
+  const isSended = authorId === userState.id
   const time = timeFormatter(createdAt)
 
   return (

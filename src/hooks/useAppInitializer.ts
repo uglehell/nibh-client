@@ -18,4 +18,10 @@ export const useAppInitializer = () => {
     // WIP
     // eslint-disable-next-line
   }, [userState.isAuthenticated, appState.isLoading])
+
+  useEffect(() => {
+    handleOnlineUsersGetter()
+    // WIP
+    // eslint-disable-next-line
+  }, [appState.wsClient?.client.readyState])
 }

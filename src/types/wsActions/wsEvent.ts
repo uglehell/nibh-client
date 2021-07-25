@@ -23,6 +23,7 @@ export interface INewMessageResponse {
   text: string
   author: string
   createdAt: string
+  authorId: string
 }
 
 export type TWsEvent = IOnlineUsersUpdateResponse | IHomeMessageResponse | INewMessageResponse

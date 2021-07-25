@@ -1,9 +1,9 @@
 import { makeAutoObservable } from 'mobx'
 
 class UserState {
-  id = '' // WIP '60d02dbb3080963948816d34'
-  username = '' // WIP 'qq'
-  isAuthenticated = false // WIP true
+  id = ''
+  username = ''
+  isAuthenticated = false
 
   constructor() {
     makeAutoObservable(this)

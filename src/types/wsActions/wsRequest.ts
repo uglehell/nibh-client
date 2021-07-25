@@ -15,6 +15,7 @@ export interface IHomeClickMessageRequest {
 }
 
 export interface INewMessageRequest {
+  authorId: string
   type: EWsRequestTypes.newMessage
   author: string
   text: string

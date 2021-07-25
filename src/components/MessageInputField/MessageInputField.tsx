@@ -27,6 +27,7 @@ export const MessageInputField: FC = () => {
     setMessageValueRef.current?.()
 
     const newMessageEvent: TWsRequest = {
+      authorId: userState.id,
       type: EWsRequestTypes.newMessage,
       author: userState.username,
       text: message,

@@ -3,12 +3,10 @@ import { TWsEvent } from '../../types/wsActions/wsEvent'
 import { TWsRequest } from '../../types/wsActions/wsRequest'
 
 export default class WsClient {
-  private client: WebSocket
-  public isReady: boolean
+  client: WebSocket
 
   constructor() {
     this.client = new WebSocket(`${WEB_SOCKETS_URL}`)
-    this.isReady = this.client.readyState === 1
   }
 
   onMessage = (callback: (event: TWsEvent) => void) => {

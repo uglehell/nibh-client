@@ -50,7 +50,7 @@ export const Settings: FC = observer(() => {
 
     if (response.ok) {
       userState.setUsername(username)
-      setPlaceholder(response.message)
+      setPlaceholder('nickname changed')
       setFieldValueRef.current && setFieldValueRef.current(USERNAME, '', false)
       return
     }

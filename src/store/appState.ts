@@ -7,6 +7,7 @@ export interface IMessage {
   createdAt: string
   text: string
   id: string
+  authorId: string
 }
 
 export interface IOnlineUser {
