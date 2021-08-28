@@ -2,7 +2,7 @@
 
 ## Frontend
 
-4 content pages:
+3 content pages:
   * HOME
   * CHAT
   * ONLINE USERS
